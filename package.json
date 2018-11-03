@@ -1,0 +1,57 @@
+{
+    "name": "pip-services3-data-node",
+    "version": "3.0.3",
+    "author": "Conceptual Vision Consulting LLC",
+    "description": "Data persistence for Pip.Services in Node.js",
+    "contributors": [
+        {
+            "name": "Sergey Seroukhov",
+            "email": "seroukhov@gmail.com"
+        },
+        {
+            "name": "Volodymyr Tkachenko",
+            "email": "vovantigo@gmail.com"
+        }
+    ],
+    "main": "./obj/src/index.js",
+    "typings": "./obj/src/index.d.ts",
+    "keywords": [
+        "pip.services",
+        "microservice",
+        "data",
+        "library"
+    ],
+    "noAnalyze": true,
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@github.com:pip-services3-node/pip-services3-data-node.git"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.6.14"
+    },
+    "private": false,
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "test": "mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
+        "retest": "tsc && mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
+        "docgen": "typedoc --out doc/api src --mode modules --excludeExternals --excludePrivate --target ES6 --ignoreCompilerErrors",
+        "docgen2": "typedoc --out doc/api src --mode file --excludeExternals --target ES6 --ignoreCompilerErrors --readme doc/ApiReference.md"
+    },
+    "dependencies": {
+        "pip-services3-commons-node": "^3.0.4",
+        "pip-services3-components-node": "^3.0.6"
+    },
+    "devDependencies": {
+        "@types/node": "*",
+        "@types/lodash": "^4.0.0",
+        "@types/async": "^2.0.0",
+        "@types/chai": "*",
+        "@types/mocha": "*",
+        "chai": "*",
+        "mocha": "*",
+        "typedoc": "^0.11.1",
+        "typedoc-plugin-external-module-name": "git+https://github.com/hobbyguy77/typedoc-plugin-external-module-name.git"
+    }
+}
