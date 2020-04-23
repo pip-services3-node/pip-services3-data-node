@@ -108,7 +108,7 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
         if (_.isFunction(filter))
             items = _.filter(items, filter);
         if (_.isFunction(sort))
-            items = _.sortUniqBy(items, sort);
+            items = _.sortBy(items, sort);
         // Extract a page
         paging = paging != null ? paging : new pip_services3_commons_node_1.PagingParams();
         let skip = paging.getSkip(-1);
@@ -143,7 +143,7 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
             items = _.filter(items, filter);
         // Apply sorting
         if (_.isFunction(sort))
-            items = _.sortUniqBy(items, sort);
+            items = _.sortBy(items, sort);
         this._logger.trace(correlationId, "Retrieved %d items", items.length);
         callback(null, items);
     }
