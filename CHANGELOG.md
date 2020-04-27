@@ -1,5 +1,10 @@
 # Data processing and persistence components for Pip.Services in Node.js Changelog
 
+## <a name="3.0.4"></a> 3.0.4 (2020-04-27)
+
+### Fixes
+* Replaced lodash deprecated function SortUniqBy by SortBy
+
 ## <a name="3.0.0"></a> 3.0.0 (2018-08-21)
 
 ### Breaking Changes
