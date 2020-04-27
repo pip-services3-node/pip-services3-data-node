@@ -21,4 +21,12 @@ suite('DummyMemoryPersistence', ()=> {
         fixture.testBatchOperations(done);
     });
 
+    test('Page Sort Operations', (done) => {
+        fixture.testPageSortingOperations((done));
+    })
+
+    test('List Sort Operations', (done) =>{
+        fixture.testListSortingOperations(done);
+    })
+
 });

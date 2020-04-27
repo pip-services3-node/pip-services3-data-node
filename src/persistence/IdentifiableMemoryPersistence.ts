@@ -126,7 +126,7 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
         if (_.isFunction(filter))
             items = _.filter(items, filter);
         if (_.isFunction(sort))
-            items = _.sortUniqBy(items, sort);
+            items = _.sortBy(items, sort);
 
         // Extract a page
         paging = paging != null ? paging : new PagingParams();
@@ -171,7 +171,7 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
 
         // Apply sorting
         if (_.isFunction(sort))
-            items = _.sortUniqBy(items, sort);
+            items = _.sortBy(items, sort);
         
         this._logger.trace(correlationId, "Retrieved %d items", items.length);
         

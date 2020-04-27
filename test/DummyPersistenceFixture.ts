@@ -1,13 +1,14 @@
 var assert = require('chai').assert;
 var async = require('async');
 
-import { AnyValueMap } from 'pip-services3-commons-node';
+import { AnyValueMap, RandomString, DataPage } from 'pip-services3-commons-node';
 import { Dummy } from './Dummy';
 import { IDummyPersistence } from './IDummyPersistence';
+import { AssertionError } from 'assert';
 
 export class DummyPersistenceFixture {
-    private _dummy1: Dummy = { id: null, key: "Key 1", content: "Content 1"};
-    private _dummy2: Dummy = { id: null, key: "Key 2", content: "Content 2"};
+    private _dummy1: Dummy = { id: null, key: "Key 1", content: "Content 1" };
+    private _dummy2: Dummy = { id: null, key: "Key 2", content: "Content 2" };
 
     private _persistence: IDummyPersistence;
 
@@ -67,7 +68,7 @@ export class DummyPersistenceFixture {
             (callback) => {
                 // Partially update the dummy
                 this._persistence.updatePartially(
-                    null, dummy1.id,  
+                    null, dummy1.id,
                     AnyValueMap.fromTuples(
                         'content', 'Partially Updated Content 1'
                     ),
@@ -114,6 +115,83 @@ export class DummyPersistenceFixture {
                 });
             }
         ], callback);
+    }
+
+    /**
+     * Creates a set of data with random length content. Evaluates a sort function
+     * @param callback When the test is complete
+     */
+    public testPageSortingOperations(callback: (err: any) => void): void {
+        const dummies: Dummy[] = [];
+        for (let d = 0; d < 20; d++) {
+            dummies.push({
+                "id": RandomString.nextString(16, 16),
+                "content": RandomString.nextString(1, 50),
+                "key": `Key ${d}`
+            })
+        }
+
+        this.createMultiple(dummies, 0);
+
+        this._persistence.getSortedPage(null, (d: Dummy) => { return d.content.length * -1; }, (err: any, page: DataPage<Dummy>): void => {
+            if (err) {
+                callback(err);
+                return;
+            }
+
+            let prevDp = page.data[0];
+            for (let dp = 1; dp < page.data.length; dp++) {
+                assert.isAtLeast(prevDp.content.length, page.data[dp].content.length);
+                prevDp = page.data[dp];
+            }
+
+            callback(null);
+        })
+    }
+
+    /**
+     * Creates a set of data with random length content. Evaluates a sort function
+     * @param callback When the test is complete
+     */
+    public testListSortingOperations(callback: (err: any) => void): void {
+        const dummies: Dummy[] = [];
+        for (let d = 0; d < 20; d++) {
+            dummies.push({
+                "id": RandomString.nextString(16, 16),
+                "content": RandomString.nextString(1, 50),
+                "key": `Key ${d}`
+            })
+        }
+
+        this.createMultiple(dummies, 0);
+
+        this._persistence.getSortedList(null, (d: Dummy) => { return d.content.length * -1; }, (err: any, list: Dummy[]): void => {
+            if (err) {
+                callback(err);
+                return;
+            }
+
+            let prevDp = list[0];
+            for (let dp = 1; dp < list.length; dp++) {
+                assert.isAtLeast(prevDp.content.length, list[dp].content.length);
+                prevDp = list[dp];
+            }
+
+            callback(null);
+        })
+    }
+
+    // to avoid too many callbacks
+    private createMultiple(items: Dummy[], index: number): void {
+        if (index >= items.length) return;
+        this._persistence.create(null, items[index], (err, item) => {
+            if (err) {
+                return;
+            }
+
+            // recursively add...
+            this.createMultiple(items, index + 1);
+        })
     }
 
     public testBatchOperations(callback: (err: any) => void): void {

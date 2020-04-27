@@ -1,5 +1,7 @@
 # <img src="https://github.com/pip-services/pip-services/raw/master/design/Logo.png" alt="Pip.Services Logo" style="max-width:30%"> <br/> Data persistence for Node.js
 
+
+
 This framework is a part of the [Pip.Services](https://github.com/pip-services/pip-services) project.
 This package contains various design patterns for working with data and provides implementation of 
 reusable data processing and persistence components:
@@ -9,7 +11,11 @@ reusable data processing and persistence components:
 - [FilePersistence](https://pip-services3-node.github.io/pip-services3-data-node/classes/persistence.filepersistence.html)
 - [IdentifiableFilePersistence](https://pip-services3-node.github.io/pip-services3-data-node/classes/persistence.identifiablefilepersistence.html)
 
-Quick Links:
+# Notes
+
+Many operations are handled by [Lodash](https://lodash.com/docs), specifially [sorting](https://lodash.com/docs/4.17.15#sortBy). It may help to familiarize yourself with this approach if you want to use it. The test folder includes examples.
+
+# Quick Links:
 
 * [Downloads](https://github.com/pip-services3-node/pip-services3-data-node/blob/master/docs/Downloads.md)
 * [API Reference](https://pip-services3-node.github.io/pip-services3-data-node/globals.html)

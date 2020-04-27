@@ -44,14 +44,16 @@
         "pip-services3-components-node": "^3.0.6"
     },
     "devDependencies": {
-        "@types/node": "*",
-        "@types/lodash": "^4.0.0",
         "@types/async": "^2.0.0",
         "@types/chai": "*",
+        "@types/lodash": "^4.0.0",
         "@types/mocha": "*",
+        "@types/node": "*",
         "chai": "*",
         "mocha": "*",
+        "ts-node": "^8.9.0",
         "typedoc": "^0.11.1",
-        "typedoc-plugin-external-module-name": "git+https://github.com/hobbyguy77/typedoc-plugin-external-module-name.git"
+        "typedoc-plugin-external-module-name": "git+https://github.com/hobbyguy77/typedoc-plugin-external-module-name.git",
+        "typescript": "^3.8.3"
     }
 }

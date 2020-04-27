@@ -10,6 +10,8 @@ import { Dummy } from './Dummy';
 
 export interface IDummyPersistence extends IGetter<Dummy, String>, IWriter<Dummy, String>, IPartialUpdater<Dummy, String> {
     getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<Dummy>) => void): void;
+    getSortedPage(correlationId: string, sort : any, callback: (err: any, page: DataPage<Dummy>) => void): void;
+    getSortedList(correlationId: string, sort : any, callback: (err: any, page: Dummy[]) => void): void;
     getListByIds(correlationId: string, ids: string[], callback: (err: any, items: Dummy[]) => void): void;
     getOneById(correlationId: string, id: string, callback: (err: any, item: Dummy) => void): void;
     create(correlationId: string, item: Dummy, callback: (err: any, item: Dummy) => void): void;

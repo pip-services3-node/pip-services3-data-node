@@ -16,7 +16,7 @@
 			// Automatically stop program after launch.
 			"stopOnEntry": false,
 			// Command line arguments passed to the program.
-			"args": ["-t","10000","-R","spec","-u","tdd","--recursive","./obj/test"],
+			"args": ["-t","10000","-R","spec","-u","tdd","--extension", "ts", "--recursive", "-r", "ts-node/register"],
 			// Workspace relative or absolute path to the working directory of the program being debugged. Default is the current workspace.
 			"cwd": "${workspaceRoot}",
 			//
@@ -26,9 +26,7 @@
 			// Environment variables passed to the program.
 			"env": { "NODE_ENV": "production"},
 			// Enable TypeScript debugging
-			"sourceMaps": true,
-			// Redirect VS to find compiled code
-			"outDir": "${workspaceRoot}/obj"
+			"sourceMaps": true
 		}
     ]
 }

@@ -29,4 +29,12 @@ suite('DummyFilePersistence', ()=> {
     test('Batch Operations', (done) => {
         fixture.testBatchOperations(done);
     });
+
+    test('Sort Operations', (done) => {
+        fixture.testPageSortingOperations(done);
+    })
+
+    test('List Sort Operations', (done) =>{
+        fixture.testListSortingOperations(done);
+    })
 });
