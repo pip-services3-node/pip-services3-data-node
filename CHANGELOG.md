@@ -1,5 +1,10 @@
 # Data processing and persistence components for Pip.Services in Node.js Changelog
 
+## <a name="3.1.0"></a> 3.1.0 (2020-05-18)
+
+### Features
+* Added getCountByFilter into IdentifiableMemoryPersistence
+
 ## <a name="3.0.4"></a> 3.0.4 (2020-04-27)
 
 ### Fixes

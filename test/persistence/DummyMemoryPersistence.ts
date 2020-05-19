@@ -29,6 +29,19 @@ export class DummyMemoryPersistence
         }, paging, null, null, callback);
     }
 
+    public getCountByFilter(correlationId: string, filter: FilterParams,
+        callback: (err: any, count: number) => void): void {
+
+        filter = filter != null ? filter : new FilterParams();
+        let key = filter.getAsNullableString("key");
+
+        super.getCountByFilter(correlationId, (item) => {
+            if (key != null && item.key != key)
+                return false;
+            return true;
+        }, callback);
+    }
+
     public getSortedPage(correlationId: string, sort: any, callback: (err: any, page: DataPage<Dummy>) => void): void {
         super.getPageByFilter(correlationId, null, null, sort, null, callback);
     }

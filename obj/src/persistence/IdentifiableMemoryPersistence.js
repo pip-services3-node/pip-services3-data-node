@@ -124,6 +124,24 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
         callback(null, page);
     }
     /**
+     * Gets a number of items retrieved by a given filter.
+     *
+     * This method shall be called by a public getCountByFilter method from child class that
+     * receives FilterParams and converts them into a filter function.
+     *
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param filter            (optional) a filter function to filter items
+     * @param callback          callback function that receives a data page or error.
+     */
+    getCountByFilter(correlationId, filter, callback) {
+        let items = this._items;
+        // Filter and sort
+        if (_.isFunction(filter))
+            items = _.filter(items, filter);
+        this._logger.trace(correlationId, "Counted %d items", items.length);
+        callback(null, items.length);
+    }
+    /**
      * Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
      *
      * This method shall be called by a public getListByFilter method from child class that
