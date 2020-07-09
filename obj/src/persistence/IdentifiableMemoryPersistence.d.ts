@@ -1,8 +1,4 @@
 import { IIdentifiable } from 'pip-services3-commons-node';
-import { IConfigurable } from 'pip-services3-commons-node';
-import { ConfigParams } from 'pip-services3-commons-node';
-import { PagingParams } from 'pip-services3-commons-node';
-import { DataPage } from 'pip-services3-commons-node';
 import { AnyValueMap } from 'pip-services3-commons-node';
 import { MemoryPersistence } from './MemoryPersistence';
 import { IWriter } from '../IWriter';
@@ -24,11 +20,6 @@ import { ISaver } from '../ISaver';
  * on updates.
  *
  * @see [[MemoryPersistence]]
- *
- * ### Configuration parameters ###
- *
- * - options:
- *     - max_page_size:       Maximum number of items returned in a single page (default: 100)
  *
  * ### References ###
  *
@@ -72,8 +63,7 @@ import { ISaver } from '../ISaver';
  *         )
  *     });
  */
-export declare class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extends MemoryPersistence<T> implements IConfigurable, IWriter<T, K>, IGetter<T, K>, ISetter<T> {
-    protected _maxPageSize: number;
+export declare class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extends MemoryPersistence<T> implements IWriter<T, K>, IGetter<T, K>, ISetter<T> {
     /**
      * Creates a new instance of the persistence.
      *
@@ -82,51 +72,6 @@ export declare class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K
      */
     constructor(loader?: ILoader<T>, saver?: ISaver<T>);
     /**
-     * Configures component by passing configuration parameters.
-     *
-     * @param config    configuration parameters to be set.
-     */
-    configure(config: ConfigParams): void;
-    /**
-     * Gets a page of data items retrieved by a given filter and sorted according to sort parameters.
-     *
-     * This method shall be called by a public getPageByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items
-     * @param paging            (optional) paging parameters
-     * @param sort              (optional) sorting parameters
-     * @param select            (optional) projection parameters (not used yet)
-     * @param callback          callback function that receives a data page or error.
-     */
-    protected getPageByFilter(correlationId: string, filter: any, paging: PagingParams, sort: any, select: any, callback: (err: any, page: DataPage<T>) => void): void;
-    /**
-     * Gets a number of items retrieved by a given filter.
-     *
-     * This method shall be called by a public getCountByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items
-     * @param callback          callback function that receives a data page or error.
-     */
-    protected getCountByFilter(correlationId: string, filter: any, callback: (err: any, count: number) => void): void;
-    /**
-     * Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
-     *
-     * This method shall be called by a public getListByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     *
-     * @param correlationId    (optional) transaction id to trace execution through call chain.
-     * @param filter           (optional) a filter function to filter items
-     * @param paging           (optional) paging parameters
-     * @param sort             (optional) sorting parameters
-     * @param select           (optional) projection parameters (not used yet)
-     * @param callback         callback function that receives a data list or error.
-     */
-    protected getListByFilter(correlationId: string, filter: any, sort: any, select: any, callback: (err: any, items: T[]) => void): void;
-    /**
      * Gets a list of data items retrieved by given unique ids.
      *
      * @param correlationId     (optional) transaction id to trace execution through call chain.
@@ -134,17 +79,6 @@ export declare class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K
      * @param callback         callback function that receives a data list or error.
      */
     getListByIds(correlationId: string, ids: K[], callback: (err: any, items: T[]) => void): void;
-    /**
-     * Gets a random item from items that match to a given filter.
-     *
-     * This method shall be called by a public getOneRandom method from child class that
-     * receives FilterParams and converts them into a filter function.
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items.
-     * @param callback          callback function that receives a random item or error.
-     */
-    protected getOneRandom(correlationId: string, filter: any, callback: (err: any, item: T) => void): void;
     /**
      * Gets a data item by its unique id.
      *
@@ -195,17 +129,6 @@ export declare class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K
      * @param callback          (optional) callback function that receives deleted item or error.
      */
     deleteById(correlationId: string, id: K, callback?: (err: any, item: T) => void): void;
-    /**
-     * Deletes data items that match to a given filter.
-     *
-     * This method shall be called by a public deleteByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     *
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items.
-     * @param callback          (optional) callback function that receives error or null for success.
-     */
-    protected deleteByFilter(correlationId: string, filter: any, callback?: (err: any) => void): void;
     /**
      * Deletes multiple data items by their unique ids.
      *

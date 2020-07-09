@@ -3,10 +3,6 @@
 let _ = require('lodash');
 
 import { IIdentifiable } from 'pip-services3-commons-node';
-import { IConfigurable } from 'pip-services3-commons-node';
-import { ConfigParams } from 'pip-services3-commons-node';
-import { PagingParams } from 'pip-services3-commons-node';
-import { DataPage } from 'pip-services3-commons-node';
 import { AnyValueMap } from 'pip-services3-commons-node';
 import { ObjectWriter } from 'pip-services3-commons-node';
 import { IdGenerator } from 'pip-services3-commons-node';
@@ -32,11 +28,6 @@ import { ISaver } from '../ISaver';
  * on updates.
  * 
  * @see [[MemoryPersistence]]
- * 
- * ### Configuration parameters ###
- * 
- * - options:
- *     - max_page_size:       Maximum number of items returned in a single page (default: 100)
  * 
  * ### References ###
  * 
@@ -81,8 +72,7 @@ import { ISaver } from '../ISaver';
  *     });
  */
 export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extends MemoryPersistence<T> 
-    implements IConfigurable, IWriter<T, K>, IGetter<T, K>, ISetter<T> {
-    protected _maxPageSize: number = 100;
+    implements IWriter<T, K>, IGetter<T, K>, ISetter<T> {
 
     /**
      * Creates a new instance of the persistence.
@@ -92,114 +82,6 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
      */
     public constructor(loader?: ILoader<T>, saver?: ISaver<T>) {
         super(loader, saver);
-    }
-
-    /**
-     * Configures component by passing configuration parameters.
-     * 
-     * @param config    configuration parameters to be set.
-     */
-    public configure(config: ConfigParams): void {
-        this._maxPageSize = config.getAsIntegerWithDefault("options.max_page_size", this._maxPageSize);
-    }
-
-    /**
-     * Gets a page of data items retrieved by a given filter and sorted according to sort parameters.
-     * 
-     * This method shall be called by a public getPageByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items
-     * @param paging            (optional) paging parameters
-     * @param sort              (optional) sorting parameters
-     * @param select            (optional) projection parameters (not used yet)
-     * @param callback          callback function that receives a data page or error.
-     */
-    protected getPageByFilter(correlationId: string, filter: any, 
-        paging: PagingParams, sort: any, select: any, 
-        callback: (err: any, page: DataPage<T>) => void): void {
-        
-        let items = this._items;
-
-        // Filter and sort
-        if (_.isFunction(filter))
-            items = _.filter(items, filter);
-        if (_.isFunction(sort))
-            items = _.sortBy(items, sort);
-
-        // Extract a page
-        paging = paging != null ? paging : new PagingParams();
-        let skip = paging.getSkip(-1);
-        let take = paging.getTake(this._maxPageSize);
-
-        let total = null;
-        if (paging.total)
-            total = items.length;
-        
-        if (skip > 0)
-            items = _.slice(items, skip);
-        items = _.take(items, take);
-        
-        this._logger.trace(correlationId, "Retrieved %d items", items.length);
-        
-        let page = new DataPage<T>(items, total);
-        callback(null, page);
-    }
-
-    /**
-     * Gets a number of items retrieved by a given filter.
-     * 
-     * This method shall be called by a public getCountByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items
-     * @param callback          callback function that receives a data page or error.
-     */
-    protected getCountByFilter(correlationId: string, filter: any, 
-        callback: (err: any, count: number) => void): void {
-        
-        let items = this._items;
-
-        // Filter and sort
-        if (_.isFunction(filter))
-            items = _.filter(items, filter);
-
-        this._logger.trace(correlationId, "Counted %d items", items.length);
-        
-        callback(null, items.length);
-    }
-
-    /**
-     * Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
-     * 
-     * This method shall be called by a public getListByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     * 
-     * @param correlationId    (optional) transaction id to trace execution through call chain.
-     * @param filter           (optional) a filter function to filter items
-     * @param paging           (optional) paging parameters
-     * @param sort             (optional) sorting parameters
-     * @param select           (optional) projection parameters (not used yet)
-     * @param callback         callback function that receives a data list or error.
-     */
-    protected getListByFilter(correlationId: string, filter: any, sort: any, select: any,
-        callback: (err: any, items: T[]) => void): void {
-        
-        let items = this._items;
-
-        // Apply filter
-        if (_.isFunction(filter))
-            items = _.filter(items, filter);
-
-        // Apply sorting
-        if (_.isFunction(sort))
-            items = _.sortBy(items, sort);
-        
-        this._logger.trace(correlationId, "Retrieved %d items", items.length);
-        
-        callback(null, items);
     }
 
     /**
@@ -215,33 +97,6 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
             return _.indexOf(ids, item.id) >= 0;
         }
         this.getListByFilter(correlationId, filter, null, null, callback);
-    }
-
-    /**
-     * Gets a random item from items that match to a given filter.
-     * 
-     * This method shall be called by a public getOneRandom method from child class that
-     * receives FilterParams and converts them into a filter function.
-     * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items.
-     * @param callback          callback function that receives a random item or error.
-     */
-    protected getOneRandom(correlationId: string, filter: any, callback: (err: any, item: T) => void): void {
-        let items = this._items;
-
-        // Apply filter
-        if (_.isFunction(filter))
-            items = _.filter(items, filter);
-
-        let item: T = items.length > 0 ? _.sample(items) : null;
-        
-        if (item != null)
-            this._logger.trace(correlationId, "Retrieved a random item");
-        else
-            this._logger.trace(correlationId, "Nothing to return as random item");
-                        
-        callback(null, item);
     }
 
     /**
@@ -271,16 +126,12 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
      * @param callback          (optional) callback function that receives created item or error.
      */
     public create(correlationId: string, item: T, callback?: (err: any, item: T) => void): void {
-        item = _.clone(item);
-        if (item.id == null)
+        if (item.id == null) {
+            item = _.clone(item);
             ObjectWriter.setProperty(item, "id", IdGenerator.nextLong());
+        }
 
-        this._items.push(item);
-        this._logger.trace(correlationId, "Created item %s", item.id);
-
-        this.save(correlationId, (err) => {
-            if (callback) callback(err, item)
-        });
+        super.create(correlationId, item, callback);
     }
 
     /**
@@ -384,38 +235,6 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
 
         this.save(correlationId, (err) => {
             if (callback) callback(err, item)
-        });
-    }
-
-    /**
-     * Deletes data items that match to a given filter.
-     * 
-     * This method shall be called by a public deleteByFilter method from child class that
-     * receives FilterParams and converts them into a filter function.
-     * 
-     * @param correlationId     (optional) transaction id to trace execution through call chain.
-     * @param filter            (optional) a filter function to filter items.
-     * @param callback          (optional) callback function that receives error or null for success.
-     */
-    protected deleteByFilter(correlationId: string, filter: any, callback?: (err: any) => void): void {
-        let deleted = 0;
-        for (let index = this._items.length - 1; index>= 0; index--) {
-            let item = this._items[index];
-            if (filter(item)) {
-                this._items.splice(index, 1);
-                deleted++;
-            }
-        }
-
-        if (deleted == 0) {
-            callback(null);
-            return;
-        }
-
-        this._logger.trace(correlationId, "Deleted %s items", deleted);
-
-        this.save(correlationId, (err) => {
-            if (callback) callback(err)
         });
     }
 
