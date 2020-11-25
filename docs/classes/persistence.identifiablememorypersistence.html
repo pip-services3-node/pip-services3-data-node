@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IdentifiableMemoryPersistence | pip-services-data-node</title>
+	<title>IdentifiableMemoryPersistence | pip-services3-data-node</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">pip-services-data-node</a>
+					<a href="../index.html" class="title">pip-services3-data-node</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -72,7 +72,7 @@
 					<div class="lead">
 						<p>Abstract persistence component that stores data in memory
 							and implements a number of CRUD operations over data items with unique ids.
-						The data items must implement <a href="https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/data.iidentifiable.html" class="external">IIdentifiable interface</a>.</p>
+						The data items must implement <a href="https://pip-services3-node.github.io/pip-services3-commons-node/interfaces/data.iidentifiable.html" class="external">IIdentifiable interface</a>.</p>
 					</div>
 					<p>In basic scenarios child classes shall only override <a href="persistence.identifiablememorypersistence.html#getpagebyfilter">getPageByFilter</a>,
 						<a href="persistence.identifiablememorypersistence.html#getlistbyfilter">getListByFilter</a> or <a href="persistence.identifiablememorypersistence.html#deletebyfilter">deleteByFilter</a> operations with specific filter function.
@@ -83,16 +83,9 @@
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="persistence.memorypersistence.html">MemoryPersistence</a></p>
-							<h3 id="configuration-parameters">Configuration parameters</h3>
-							<ul>
-								<li>options:<ul>
-										<li>max_page_size:       Maximum number of items returned in a single page (default: 100)</li>
-									</ul>
-								</li>
-							</ul>
 							<h3 id="references">References</h3>
 							<ul>
-								<li><code>*:logger:*:*:1.0</code>     (optional) <a href="https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/log.ilogger.html" class="external">ILogger</a> components to pass log messages</li>
+								<li><code>*:logger:*:*:1.0</code>     (optional) <a href="https://pip-services3-node.github.io/pip-services3-components-node/interfaces/log.ilogger.html" class="external">ILogger</a> components to pass log messages</li>
 							</ul>
 							<h3 id="examples">Examples</h3>
 							<pre><code><span class="hljs-keyword">class</span> MyMemoryPersistence <span class="hljs-keyword">extends</span> IdentifiableMemoryPersistence&lt;MyData, <span class="hljs-built_in">string</span>&gt; {
@@ -166,10 +159,10 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">IReferenceable</span></li>
-					<li><span class="tsd-signature-type">IOpenable</span></li>
-					<li><span class="tsd-signature-type">ICleanable</span></li>
-					<li><span class="tsd-signature-type">IConfigurable</span></li>
+					<li><span class="tsd-signature-type">any</span></li>
+					<li><span class="tsd-signature-type">any</span></li>
+					<li><span class="tsd-signature-type">any</span></li>
+					<li><span class="tsd-signature-type">any</span></li>
 					<li><a href="../interfaces/core.iwriter.html" class="tsd-signature-type">IWriter</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></li>
 					<li><a href="../interfaces/core.igetter.html" class="tsd-signature-type">IGetter</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span></li>
 					<li><a href="../interfaces/core.isetter.html" class="tsd-signature-type">ISetter</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
@@ -185,13 +178,13 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="persistence.identifiablememorypersistence.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private-protected">
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#_items" class="tsd-kind-icon">_items</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#_loader" class="tsd-kind-icon">_loader</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#_logger" class="tsd-kind-icon">_logger</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#_maxpagesize" class="tsd-kind-icon">_max<wbr>Page<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#_maxpagesize" class="tsd-kind-icon">_max<wbr>Page<wbr>Size</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#_opened" class="tsd-kind-icon">_opened</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#_saver" class="tsd-kind-icon">_saver</a></li>
 							</ul>
@@ -201,16 +194,17 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="persistence.identifiablememorypersistence.html#clear" class="tsd-kind-icon">clear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="persistence.identifiablememorypersistence.html#close" class="tsd-kind-icon">close</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="persistence.identifiablememorypersistence.html#configure" class="tsd-kind-icon">configure</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="persistence.identifiablememorypersistence.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#deletebyfilter" class="tsd-kind-icon">delete<wbr>ByFilter</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="persistence.identifiablememorypersistence.html#configure" class="tsd-kind-icon">configure</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="persistence.identifiablememorypersistence.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#deletebyfilter" class="tsd-kind-icon">delete<wbr>ByFilter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="persistence.identifiablememorypersistence.html#deletebyid" class="tsd-kind-icon">delete<wbr>ById</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="persistence.identifiablememorypersistence.html#deletebyids" class="tsd-kind-icon">delete<wbr>ByIds</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#getlistbyfilter" class="tsd-kind-icon">get<wbr>List<wbr>ByFilter</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#getcountbyfilter" class="tsd-kind-icon">get<wbr>Count<wbr>ByFilter</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#getlistbyfilter" class="tsd-kind-icon">get<wbr>List<wbr>ByFilter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="persistence.identifiablememorypersistence.html#getlistbyids" class="tsd-kind-icon">get<wbr>List<wbr>ByIds</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="persistence.identifiablememorypersistence.html#getonebyid" class="tsd-kind-icon">get<wbr>One<wbr>ById</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#getonerandom" class="tsd-kind-icon">get<wbr>One<wbr>Random</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#getpagebyfilter" class="tsd-kind-icon">get<wbr>Page<wbr>ByFilter</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#getonerandom" class="tsd-kind-icon">get<wbr>One<wbr>Random</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="persistence.identifiablememorypersistence.html#getpagebyfilter" class="tsd-kind-icon">get<wbr>Page<wbr>ByFilter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="persistence.identifiablememorypersistence.html#isopen" class="tsd-kind-icon">is<wbr>Open</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="persistence.identifiablememorypersistence.html#open" class="tsd-kind-icon">open</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="persistence.identifiablememorypersistence.html#save" class="tsd-kind-icon">save</a></li>
@@ -236,7 +230,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<aside class="tsd-sources">
 								<p>Overrides <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L85">persistence/IdentifiableMemoryPersistence.ts:85</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:75</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -268,7 +262,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="_items" class="tsd-anchor"></a>
@@ -277,7 +271,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#_items">_items</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L54">persistence/MemoryPersistence.ts:54</a></li>
+							<li>Defined in persistence/MemoryPersistence.ts:66</li>
 						</ul>
 					</aside>
 				</section>
@@ -288,7 +282,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#_loader">_loader</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L55">persistence/MemoryPersistence.ts:55</a></li>
+							<li>Defined in persistence/MemoryPersistence.ts:67</li>
 						</ul>
 					</aside>
 				</section>
@@ -299,17 +293,18 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#_logger">_logger</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L53">persistence/MemoryPersistence.ts:53</a></li>
+							<li>Defined in persistence/MemoryPersistence.ts:65</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="_maxpagesize" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _max<wbr>Page<wbr>Size</h3>
 					<div class="tsd-signature tsd-kind-icon">_max<wbr>Page<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;100</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#_maxpagesize">_maxPageSize</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L85">persistence/IdentifiableMemoryPersistence.ts:85</a></li>
+							<li>Defined in persistence/MemoryPersistence.ts:70</li>
 						</ul>
 					</aside>
 				</section>
@@ -320,7 +315,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#_opened">_opened</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L57">persistence/MemoryPersistence.ts:57</a></li>
+							<li>Defined in persistence/MemoryPersistence.ts:69</li>
 						</ul>
 					</aside>
 				</section>
@@ -331,7 +326,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#_saver">_saver</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L56">persistence/MemoryPersistence.ts:56</a></li>
+							<li>Defined in persistence/MemoryPersistence.ts:68</li>
 						</ul>
 					</aside>
 				</section>
@@ -349,7 +344,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#clear">clear</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L156">persistence/MemoryPersistence.ts:156</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:178</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,7 +400,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#close">close</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L122">persistence/MemoryPersistence.ts:122</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:144</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -450,17 +445,18 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="configure" class="tsd-anchor"></a>
 					<h3>configure</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">configure<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#configure">configure</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L102">persistence/IdentifiableMemoryPersistence.ts:102</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:88</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -481,17 +477,18 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 					<a name="create" class="tsd-anchor"></a>
 					<h3>create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, item<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Overrides <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#create">create</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L249">persistence/IdentifiableMemoryPersistence.ts:249</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:128</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -542,17 +539,18 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="deletebyfilter" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> delete<wbr>ByFilter</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">delete<wbr>ByFilter<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#deletebyfilter">deleteByFilter</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L376">persistence/IdentifiableMemoryPersistence.ts:376</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:338</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -615,7 +613,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L348">persistence/IdentifiableMemoryPersistence.ts:348</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:223</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -676,7 +674,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L405">persistence/IdentifiableMemoryPersistence.ts:405</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:248</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -727,17 +725,85 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="getcountbyfilter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Count<wbr>ByFilter</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Count<wbr>ByFilter<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#getcountbyfilter">getCountByFilter</a></p>
+								<ul>
+									<li>Defined in persistence/MemoryPersistence.ts:238</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets a number of items retrieved by a given filter.</p>
+								</div>
+								<p>This method shall be called by a public getCountByFilter method from child class that
+								receives FilterParams and converts them into a filter function.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
+								</li>
+								<li>
+									<h5>filter: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) a filter function to filter items</p>
+									</div>
+								</li>
+								<li>
+									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives a data page or error.</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>err: <span class="tsd-signature-type">any</span></h5>
+														</li>
+														<li>
+															<h5>count: <span class="tsd-signature-type">number</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="getlistbyfilter" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>List<wbr>ByFilter</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>ByFilter<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, sort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, select<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#getlistbyfilter">getListByFilter</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L163">persistence/IdentifiableMemoryPersistence.ts:163</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:265</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -815,7 +881,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L188">persistence/IdentifiableMemoryPersistence.ts:188</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:94</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -879,7 +945,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L230">persistence/IdentifiableMemoryPersistence.ts:230</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:109</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -933,17 +999,18 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="getonerandom" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>One<wbr>Random</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>One<wbr>Random<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#getonerandom">getOneRandom</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L206">persistence/IdentifiableMemoryPersistence.ts:206</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:293</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -999,17 +1066,18 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="getpagebyfilter" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Page<wbr>ByFilter</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">get<wbr>Page<wbr>ByFilter<span class="tsd-signature-symbol">(</span>correlationId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, filter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, paging<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PagingParams</span>, sort<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, select<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#getpagebyfilter">getPageByFilter</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L119">persistence/IdentifiableMemoryPersistence.ts:119</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:197</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1094,7 +1162,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#isopen">isOpen</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L84">persistence/MemoryPersistence.ts:84</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:106</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1118,7 +1186,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#open">open</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L94">persistence/MemoryPersistence.ts:94</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:116</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1174,7 +1242,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#save">save</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L136">persistence/MemoryPersistence.ts:136</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:158</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1229,7 +1297,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L270">persistence/IdentifiableMemoryPersistence.ts:270</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:145</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1292,7 +1360,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="persistence.memorypersistence.html">MemoryPersistence</a>.<a href="persistence.memorypersistence.html#setreferences">setReferences</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/MemoryPersistence.ts#L75">persistence/MemoryPersistence.ts:75</a></li>
+									<li>Defined in persistence/MemoryPersistence.ts:97</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1323,7 +1391,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L294">persistence/IdentifiableMemoryPersistence.ts:294</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:169</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1384,7 +1452,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-data-node/blob/6fdb43b/src/persistence/IdentifiableMemoryPersistence.ts#L320">persistence/IdentifiableMemoryPersistence.ts:320</a></li>
+									<li>Defined in persistence/IdentifiableMemoryPersistence.ts:195</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1482,7 +1550,7 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="persistence.identifiablememorypersistence.html#_logger" class="tsd-kind-icon">_logger</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="persistence.identifiablememorypersistence.html#_maxpagesize" class="tsd-kind-icon">_max<wbr>Page<wbr>Size</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
@@ -1497,13 +1565,13 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="persistence.identifiablememorypersistence.html#close" class="tsd-kind-icon">close</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="persistence.identifiablememorypersistence.html#configure" class="tsd-kind-icon">configure</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 								<a href="persistence.identifiablememorypersistence.html#create" class="tsd-kind-icon">create</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="persistence.identifiablememorypersistence.html#deletebyfilter" class="tsd-kind-icon">delete<wbr>ByFilter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1512,7 +1580,10 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="persistence.identifiablememorypersistence.html#deletebyids" class="tsd-kind-icon">delete<wbr>ByIds</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+								<a href="persistence.identifiablememorypersistence.html#getcountbyfilter" class="tsd-kind-icon">get<wbr>Count<wbr>ByFilter</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="persistence.identifiablememorypersistence.html#getlistbyfilter" class="tsd-kind-icon">get<wbr>List<wbr>ByFilter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1521,10 +1592,10 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="persistence.identifiablememorypersistence.html#getonebyid" class="tsd-kind-icon">get<wbr>One<wbr>ById</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="persistence.identifiablememorypersistence.html#getonerandom" class="tsd-kind-icon">get<wbr>One<wbr>Random</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="persistence.identifiablememorypersistence.html#getpagebyfilter" class="tsd-kind-icon">get<wbr>Page<wbr>ByFilter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
@@ -1557,6 +1628,9 @@ persistence.create(<span class="hljs-string">"123"</span>, { id: <span class="hl
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="persistence.memorypersistence.html" class="tsd-kind-icon">Memory<wbr>Persistence</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/persistence.html#_" class="tsd-kind-icon">_</a>
 					</li>
 				</ul>
 			</nav>
