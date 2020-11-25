@@ -1,6 +1,7 @@
+/** @module persistence */
+
 const _ = require('lodash');
 
-/** @module persistence */
 import { IReferenceable } from 'pip-services3-commons-node';
 import { IReferences } from 'pip-services3-commons-node';
 import { IOpenable } from 'pip-services3-commons-node';
@@ -33,7 +34,7 @@ import { ISaver } from '../ISaver';
  * 
  * ### References ###
  * 
- * - <code>\*:logger:\*:\*:1.0</code>       (optional) [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages
+ * - <code>\*:logger:\*:\*:1.0</code>       (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/log.ilogger.html ILogger]] components to pass log messages
  * 
  * ### Example ###
  * 

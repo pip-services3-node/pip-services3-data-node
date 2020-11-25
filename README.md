@@ -22,7 +22,7 @@ This module contains the following packages:
 
 Install the NPM package as
 ```bash
-npm pip-services3-data-node --save
+npm install pip-services3-data-node --save
 ```
 
 ## Develop
