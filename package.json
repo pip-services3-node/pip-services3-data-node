@@ -54,7 +54,7 @@
         "@types/node": "*",
         "ts-node": "^8.9.0",
         "chai": "*",
-        "mocha": "*",
+        "mocha": "7.2.0",
         "typedoc": "^0.11.1",
         "typedoc-plugin-external-module-name": "git+https://github.com/hobbyguy77/typedoc-plugin-external-module-name.git"
     }
