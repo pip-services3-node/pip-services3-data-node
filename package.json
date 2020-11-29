@@ -1,6 +1,6 @@
 {
     "name": "pip-services3-data-node",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Data persistence for Pip.Services in Node.js",
     "contributors": [
@@ -40,9 +40,6 @@
         "docgen2": "typedoc --out docs src --mode file --excludeExternals --target ES6 --ignoreCompilerErrors --readme docs/ApiReference.md"
     },
     "dependencies": {
-        "highlight.js": "9.12.0",
-        "handlebars": "4.0.12",
-        "js-yaml": "3.12.0",
         "pip-services3-commons-node": "^3.0.4",
         "pip-services3-components-node": "^3.0.6"
     },

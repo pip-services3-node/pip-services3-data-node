@@ -1,4 +1,5 @@
 "use strict";
+/** @module persistence */
 Object.defineProperty(exports, "__esModule", { value: true });
 const _ = require('lodash');
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
@@ -23,7 +24,7 @@ const pip_services3_components_node_1 = require("pip-services3-components-node")
  *
  * ### References ###
  *
- * - <code>\*:logger:\*:\*:1.0</code>       (optional) [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages
+ * - <code>\*:logger:\*:\*:1.0</code>       (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/log.ilogger.html ILogger]] components to pass log messages
  *
  * ### Example ###
  *
