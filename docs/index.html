@@ -62,18 +62,18 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="-img-src-https-uploads-ssl-webflow-com-5ea5d3315186cf5ec60c3ee4-5edf1c94ce4c859f2b188094_logo-svg-alt-pip-services-logo-width-200-br-data-persistence-for-node-js"><img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Data persistence for Node.js</h1>
-				<p>This module is a part of the <a href="http://pipservices.org">Pip.Services</a> polyglot microservices toolkit.</p>
-				<p>The data module contains a set of basic primitives for working with and storing data. All other data modules are based on it.</p>
-				<p>This module contains the following packages:</p>
+				<h1 id="-img-src-https-uploads-ssl-webflow-com-5ea5d3315186cf5ec60c3ee4-5edf1c94ce4c859f2b188094_logo-svg-alt-pip-services-logo-width-200-br-persistence-components-for-node-js"><img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Persistence components for Node.js</h1>
+				<p>This module is a part of the <a href="http://pipservices.org">Pip.Services</a> polyglot microservices toolkit. It contains generic interfaces for data access components as well as abstract implementations for in-memory and file persistence.</p>
+				<p>The persistence components come in two kinds. The first kind is a basic persistence that can work with any object types and provides only minimal set of operations.
+				The second kind is so called &quot;identifieable&quot; persistence with works with &quot;identifable&quot; data objects, i.e. objects that have unique ID field. The identifiable persistence provides a full set or CRUD operations that covers most common cases.</p>
+				<p>The module contains the following packages:</p>
 				<ul>
-					<li><strong>Presistence</strong> - contains two persistence component implementations: one for storing data in-memory, and another for storing data in files in the JSON format</li>
-					<li><strong>Core</strong> - contains interfaces for various design patterns that work with data. </li>
+					<li><strong>Core</strong> - generic interfaces for data access components. </li>
+					<li><strong>Persistence</strong> - in-memory and file persistence components, as well as JSON persister class.</li>
 				</ul>
 				<p><a name="links"></a> Quick links:</p>
 				<ul>
 					<li><a href="https://www.pipservices.org/recipies/memory-persistence">Memory persistence</a></li>
-					<li><a href="https://www.pipservices.org/docs/tutorials/data-microservice/persistence">Data Microservice. Step 3</a> </li>
 					<li><a href="https://pip-services3-node.github.io/pip-services3-data-node/globals.html">API Reference</a></li>
 					<li><a href="CHANGELOG.md">Change Log</a></li>
 					<li><a href="https://www.pipservices.org/community/help">Get Help</a></li>
@@ -82,6 +82,101 @@
 				<h2 id="use">Use</h2>
 				<p>Install the NPM package as</p>
 				<pre><code class="lang-bash">npm install pip-services3-data-node --save
+</code></pre>
+				<p>For example, you need to implement persistence for a data object defined as following.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { IIdentifiable } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyObject <span class="hljs-keyword">implements</span> IIdentifiable {
+  <span class="hljs-keyword">public</span> id: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">public</span> key: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">public</span> value: <span class="hljs-built_in">number</span>;
+}
+</code></pre>
+				<p>Our persistence component shall implement the following interface with a basic set of CRUD operations.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> IMyPersistence {
+    getPageByFilter(correlationId: <span class="hljs-built_in">string</span>, filter: FilterParams, paging: PagingParams,
+      callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, page: DataPage&lt;MyObject&gt;</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span>;
+
+    getOneById(correlationId: <span class="hljs-built_in">string</span>, id: <span class="hljs-built_in">string</span>, callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, item: MyObject</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span>;
+
+    getOneByKey(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>, callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, item: MyObject</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span>;
+
+    create(correlationId: <span class="hljs-built_in">string</span>, item: MyObject, callback?: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, item: MyObject</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span>;
+
+    update(correlationId: <span class="hljs-built_in">string</span>, item: MyObject, callback?: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, item: MyObject</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span>;
+
+    deleteById(correlationId: <span class="hljs-built_in">string</span>, id: <span class="hljs-built_in">string</span>, callback?: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, item: MyObject</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span>;
+}
+</code></pre>
+				<p>To implement in-memory persistence component you shall inherit <code>IdentifiableMemoryPersistence</code>.
+					Most CRUD operations will come from the base class. You only need to override <code>getPageByFilter</code> method with a custom filter function.
+				And implement a <code>getOneByKey</code> custom persistence method that doesn&#39;t exist in the base class.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { IdentifiableMemoryPersistence } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-data-node'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyMemoryPersistence <span class="hljs-keyword">extends</span> IdentifableMemoryPersistence {
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">super</span>();
+  }
+
+  <span class="hljs-keyword">private</span> composeFilter(filter: FilterParams): <span class="hljs-built_in">any</span> {
+    filter = filter || <span class="hljs-keyword">new</span> FilterParams();
+
+    <span class="hljs-keyword">let</span> id = filter.getAsNullableString(<span class="hljs-string">"id"</span>);
+    <span class="hljs-keyword">let</span> tempIds = filter.getAsNullableString(<span class="hljs-string">"ids"</span>);
+    <span class="hljs-keyword">let</span> ids = tempIds != <span class="hljs-literal">null</span> ? tempIds.split(<span class="hljs-string">","</span>) : <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">let</span> key = filter.getAsNullableString(<span class="hljs-string">"key"</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (id != <span class="hljs-literal">null</span> &amp;&amp; item.id != id)
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">if</span> (ids != <span class="hljs-literal">null</span> &amp;&amp; ids.indexOf(item.id) &lt; <span class="hljs-number">0</span>)
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">if</span> (key != <span class="hljs-literal">null</span> &amp;&amp; item.key != key)
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    };
+  }
+
+  <span class="hljs-keyword">public</span> getPageByFilter(correlationId: <span class="hljs-built_in">string</span>, filter: FilterParams, paging: PagingParams,
+    callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, page: DataPage&lt;MyObject&gt;</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">super</span>.getPageByFilter(correlationId, <span class="hljs-keyword">this</span>.composeFilter(filter), paging, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, callback);
+  }  
+
+  <span class="hljs-keyword">public</span> getOneByKey(correlationId: <span class="hljs-built_in">string</span>, key: <span class="hljs-built_in">string</span>,
+    callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, item: MyObject</span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> {
+
+    <span class="hljs-keyword">let</span> item = _.find(<span class="hljs-keyword">this</span>._items, <span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item.key == key);
+
+    <span class="hljs-keyword">if</span> (item != <span class="hljs-literal">null</span>) {
+      <span class="hljs-keyword">this</span>._logger.trace(correlationId, <span class="hljs-string">"Found object by key=%s"</span>, key);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">this</span>._logger.trace(correlationId, <span class="hljs-string">"Cannot find by key=%s"</span>, key);
+    }
+
+    callback(<span class="hljs-literal">null</span>, item);
+  }
+
+}
+</code></pre>
+				<p>It is easy to create file persistence by adding a persister object to the implemented in-memory persistence component.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { ConfigParams } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>;
+<span class="hljs-keyword">import</span> { JsonFilePersister } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-data-node'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyFilePersistence <span class="hljs-keyword">extends</span> MyMemoryPersistence {
+  <span class="hljs-keyword">protected</span> _persister: JsonFilePersister&lt;MyObject&gt;;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">path?: <span class="hljs-built_in">string</span></span>) {
+      <span class="hljs-keyword">super</span>();
+      <span class="hljs-keyword">this</span>._persister = <span class="hljs-keyword">new</span> JsonFilePersister&lt;MyObject&gt;(path);
+      <span class="hljs-keyword">this</span>._loader = <span class="hljs-keyword">this</span>._persister;
+      <span class="hljs-keyword">this</span>._saver = <span class="hljs-keyword">this</span>._persister;
+  }
+
+  <span class="hljs-keyword">public</span> configure(config: ConfigParams) {
+      <span class="hljs-keyword">super</span>.configure(config);
+      <span class="hljs-keyword">this</span>._persister.configure(config);
+  }
+}
 </code></pre>
 				<h2 id="develop">Develop</h2>
 				<p>For development you shall install the following prerequisites:</p>
