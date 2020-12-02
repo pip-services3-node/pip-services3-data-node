@@ -1,6 +1,6 @@
 {
-    "name": "pip-services-data",
+    "name": "pip-services3-data-node",
     "registry": "pipdevs",
     "version": "3.2.1",
-    "build": "0"
+    "build": 0
 }
