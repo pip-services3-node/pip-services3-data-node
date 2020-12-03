@@ -23,7 +23,7 @@ Install the NPM package as
 npm install pip-services3-data-node --save
 ```
 
-For example, you need to implement persistence for a data object defined as following.
+As an example, lets implement persistence for the following data object.
 
 ```typescript
 import { IIdentifiable } from 'pip-services3-commons-node';
