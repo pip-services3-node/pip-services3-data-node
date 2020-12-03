@@ -130,6 +130,21 @@ export class MyFilePersistence extends MyMemoryPersistence {
 }
 ```
 
+Configuration for your microservice that includes memory and file persistence may look the following way.
+
+```yaml
+...
+{{#if MEMORY_ENABLED}}
+- descriptor: "myservice:persistence:memory:default:1.0"
+{{/if}}
+
+{{#if FILE_ENABLED}}
+- descriptor: "myservice:persistence:file:default:1.0"
+  path: {{FILE_PATH}}{{#unless FILE_PATH}}"../data/data.json"{{/unless}}
+{{/if}}
+...
+```
+
 ## Develop
 
 For development you shall install the following prerequisites:
